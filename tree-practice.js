@@ -80,7 +80,15 @@ function getHeight(rootNode) {
 // }
 
 function balancedTree(rootNode) {
-  // Your code here
+  if (rootNode === null) return true
+
+  // Recursively find the height of the left and right subtrees
+  const leftHeight = getHeight(rootNode.left);
+  const rightHeight = getHeight(rootNode.right);
+
+
+  return Math.abs(leftHeight - rightHeight) <= 1 && balancedTree(rootNode.left) && balancedTree(rootNode.right)
+
 }
 
 function countNodes(rootNode) {
