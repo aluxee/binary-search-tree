@@ -41,12 +41,43 @@ function findMinBT(rootNode) {
 }
 
 function findMaxBT(rootNode) {
+  if (rootNode === null) {
+    return -Infinity; // Return a small value to represent "no max"
+  }
 
+  // Recursively find the maximum value in the left and right subtrees
+  const leftMax = findMaxBT(rootNode.left);
+  const rightMax = findMaxBT(rootNode.right);
+
+  // Compare the maximum values and return the largest
+  return Math.max(rootNode.val, leftMax, rightMax);
 }
+
 
 function getHeight(rootNode) {
-  // Your code here
+  if (rootNode === null) {
+    return -1; // Height of an empty tree is -1
+  }
+
+  // Recursively find the height of the left and right subtrees
+  const leftHeight = getHeight(rootNode.left);
+  const rightHeight = getHeight(rootNode.right);
+
+  // Return the maximum of the left and right heights, plus 1 for the current node
+  return Math.max(leftHeight, rightHeight) + 1;
 }
+//   if (rootNode === null)
+//   return -1;
+
+//   let leftMaxBst = findMaxBST(rootNode.left)
+//   let rightMaxBst = findMaxBST(rootNode.right)
+//   let leftMinBst = findMinBST(rootNode.left)
+//   let rightMinBst = findMinBST(rootNode.right)
+
+//   return leftMaxBst - leftMinBst;
+
+
+// }
 
 function balancedTree(rootNode) {
   // Your code here
