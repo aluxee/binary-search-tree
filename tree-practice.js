@@ -92,7 +92,16 @@ function balancedTree(rootNode) {
 }
 
 function countNodes(rootNode) {
-  // Your code here
+  let count = 0
+  if (rootNode === null)
+  return count; // No nodes in empty tree
+
+  // Recursively count nodes in left and right subtrees
+  const leftCount = countNodes(rootNode.left);
+  const rightCount = countNodes(rootNode.right);
+// return total count plus current node
+  return leftCount + rightCount + 1;
+
 }
 
 function getParentNode(rootNode, target) {
