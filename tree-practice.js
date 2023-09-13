@@ -4,39 +4,44 @@ const { BinarySearchTree, TreeNode } = require('./binary-search-tree.js');
 
 // Practice problems on binary trees
 
-function findMinBST (rootNode) {
+function findMinBST(rootNode) {
+  let currentNode = rootNode
+
+  while (currentNode.left !== null) {
+    currentNode = currentNode.left
+  }
+  return currentNode.val
+}
+
+function findMaxBST(rootNode) {
   // Your code here
 }
 
-function findMaxBST (rootNode) {
+function findMinBT(rootNode) {
   // Your code here
 }
 
-function findMinBT (rootNode) {
+function findMaxBT(rootNode) {
   // Your code here
 }
 
-function findMaxBT (rootNode) {
+function getHeight(rootNode) {
   // Your code here
 }
 
-function getHeight (rootNode) {
+function balancedTree(rootNode) {
   // Your code here
 }
 
-function balancedTree (rootNode) {
+function countNodes(rootNode) {
   // Your code here
 }
 
-function countNodes (rootNode) {
+function getParentNode(rootNode, target) {
   // Your code here
 }
 
-function getParentNode (rootNode, target) {
-  // Your code here
-}
-
-function inOrderPredecessor (rootNode, target) {
+function inOrderPredecessor(rootNode, target) {
   // Your code here
 }
 
@@ -55,7 +60,7 @@ function deleteNodeBST(rootNode, target) {
 
   // Case 2: Two children:
   //  Set the value to its in-order predecessor, then delete the predecessor
-  //  Replace target node with the left most child on its right side, 
+  //  Replace target node with the left most child on its right side,
   //  or the right most child on its left side.
   //  Then delete the child that it was replaced with.
 
@@ -65,14 +70,14 @@ function deleteNodeBST(rootNode, target) {
 }
 
 module.exports = {
-    findMinBST,
-    findMaxBST,
-    findMinBT,
-    findMaxBT,
-    getHeight,
-    countNodes,
-    balancedTree,
-    getParentNode,
-    inOrderPredecessor,
-    deleteNodeBST
+  findMinBST,
+  findMaxBST,
+  findMinBT,
+  findMaxBT,
+  getHeight,
+  countNodes,
+  balancedTree,
+  getParentNode,
+  inOrderPredecessor,
+  deleteNodeBST
 }
