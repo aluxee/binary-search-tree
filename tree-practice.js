@@ -4,9 +4,9 @@ const { BinarySearchTree, TreeNode } = require('./binary-search-tree.js');
 
 // Practice problems on binary trees
 
-function findMinBST(rootNode) {
+function findMinBST(node) {
   // Start at root node
-  let currentNode = rootNode
+  let currentNode = node
   // Traverse left until we reach the leftmost leaf
   while (currentNode.left !== null) {
     currentNode = currentNode.left
@@ -15,9 +15,9 @@ function findMinBST(rootNode) {
   return currentNode.val
 }
 
-function findMaxBST(rootNode) {
+function findMaxBST(node) {
   // Start at root node
-  let currentNode = rootNode;
+  let currentNode = node;
   // Traverse right until we reach the rightmost leaf
   while (currentNode.right !== null) {
     currentNode = currentNode.right
@@ -26,93 +26,111 @@ function findMaxBST(rootNode) {
   return currentNode.val;
 }
 
-function findMinBT(rootNode) {
-  // if there is no rootNode, return a value that reps there's no min
-  if (rootNode === null) {
+function findMinBT(node) {
+  // if there is no node, return a value that reps there's no min
+  if (node === null) {
     return Infinity
   }
 
-  const leftMin = findMinBT(rootNode.left) //recursively finds the left minimum value
-  const rightMin = findMinBT(rootNode.right) // recursively finds the right minimum value
+  const leftMin = findMinBT(node.left) //recursively finds the left minimum value
+  const rightMin = findMinBT(node.right) // recursively finds the right minimum value
 
   // compares the minimum values and returns the smallest ones
-  return Math.min(rootNode.val, leftMin, rightMin)
+  return Math.min(node.val, leftMin, rightMin)
 
 }
 
-function findMaxBT(rootNode) {
-  if (rootNode === null) {
+function findMaxBT(node) {
+  if (node === null) {
     return -Infinity; // Return a small value to represent "no max"
   }
 
   // Recursively find the maximum value in the left and right subtrees
-  const leftMax = findMaxBT(rootNode.left);
-  const rightMax = findMaxBT(rootNode.right);
+  const leftMax = findMaxBT(node.left);
+  const rightMax = findMaxBT(node.right);
 
   // Compare the maximum values and return the largest
-  return Math.max(rootNode.val, leftMax, rightMax);
+  return Math.max(node.val, leftMax, rightMax);
 }
 
 
-function getHeight(rootNode) {
-  if (rootNode === null) {
+function getHeight(node) {
+  if (node === null) {
     return -1; // Height of an empty tree is -1
   }
 
   // Recursively find the height of the left and right subtrees
-  const leftHeight = getHeight(rootNode.left);
-  const rightHeight = getHeight(rootNode.right);
+  const leftHeight = getHeight(node.left);
+  const rightHeight = getHeight(node.right);
 
   // Return the maximum of the left and right heights, plus 1 for the current node
   return Math.max(leftHeight, rightHeight) + 1;
 }
-//   if (rootNode === null)
+//   if (node === null)
 //   return -1;
 
-//   let leftMaxBst = findMaxBST(rootNode.left)
-//   let rightMaxBst = findMaxBST(rootNode.right)
-//   let leftMinBst = findMinBST(rootNode.left)
-//   let rightMinBst = findMinBST(rootNode.right)
+//   let leftMaxBst = findMaxBST(node.left)
+//   let rightMaxBst = findMaxBST(node.right)
+//   let leftMinBst = findMinBST(node.left)
+//   let rightMinBst = findMinBST(node.right)
 
 //   return leftMaxBst - leftMinBst;
 
 
 // }
 
-function balancedTree(rootNode) {
-  if (rootNode === null) return true
+function balancedTree(node) {
+  if (node === null) return true
 
   // Recursively find the height of the left and right subtrees
-  const leftHeight = getHeight(rootNode.left);
-  const rightHeight = getHeight(rootNode.right);
+  const leftHeight = getHeight(node.left);
+  const rightHeight = getHeight(node.right);
 
 
-  return Math.abs(leftHeight - rightHeight) <= 1 && balancedTree(rootNode.left) && balancedTree(rootNode.right)
+  return Math.abs(leftHeight - rightHeight) <= 1 && balancedTree(node.left) && balancedTree(node.right)
 
 }
 
-function countNodes(rootNode) {
+function countNodes(node) {
   let count = 0
-  if (rootNode === null)
-  return count; // No nodes in empty tree
+  if (node === null)
+    return count; // No nodes in empty tree
 
   // Recursively count nodes in left and right subtrees
-  const leftCount = countNodes(rootNode.left);
-  const rightCount = countNodes(rootNode.right);
-// return total count plus current node
+  const leftCount = countNodes(node.left);
+  const rightCount = countNodes(node.right);
+  // return total count plus current node
   return leftCount + rightCount + 1;
 
 }
 
-function getParentNode(rootNode, target) {
+function getParentNode(node, target) {
+  // if (!target) return undefined
+  // if (target && !node) return null
+
+  //takes the node of getParentNode fxn and the target VALUE, then the function should return the NODE that points to the target value
+
+
+  // if (node === null) return null; // if the node's value is null return null
+
+  // // if (parent === null) return undefined
+
+
+
+  // if ((node.left !== null) && (node.left.val === target) || (node.right !== null) && (node.right.val === target)) {
+  //   return node
+  // }
+
+  // return leftParent !== null ? leftParent : rightParent
+}
+
+
+
+function inOrderPredecessor(node, target) {
   // Your code here
 }
 
-function inOrderPredecessor(rootNode, target) {
-  // Your code here
-}
-
-function deleteNodeBST(rootNode, target) {
+function deleteNodeBST(node, target) {
   // Do a traversal to find the node. Keep track of the parent
 
   // Undefined if the target cannot be found
