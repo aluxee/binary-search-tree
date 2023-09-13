@@ -14,7 +14,14 @@ function findMinBST(rootNode) {
 }
 
 function findMaxBST(rootNode) {
-  // Your code here
+  // Start at root node
+  let currentNode = rootNode;
+  // Traverse right until we reach the rightmost leaf
+ while (currentNode.right !== null) {
+  currentNode = currentNode.right
+ }
+ // Rightmost leaf is the max value of BST
+ return currentNode.val;
 }
 
 function findMinBT(rootNode) {
