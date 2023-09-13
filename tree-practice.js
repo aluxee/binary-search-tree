@@ -104,7 +104,41 @@ function countNodes(node) {
 
 }
 
-function getParentNode(node, target) {
+// Get Parent Node
+function getParentNode(rootNode, target) {
+  if (rootNode === null) {
+    return null; // Return undefined if the tree is empty
+  }
+    function findParent(node, target) {
+      if (node === null) {
+        return null; // Target not found in the subtree
+      }
+
+      if (
+        (node.left !== null && node.left.val === target) ||
+        (node.right !== null && node.right.val === target)
+      ) {
+        return node; // Found the parent of the target node
+      }
+
+      // Recursively search in the left and right subtrees
+      const leftParent = findParent(node.left, target);
+      const rightParent = findParent(node.right, target);
+
+      // Return the parent from the subtree where the target was found
+      return leftParent !== null ? leftParent : rightParent;
+    }
+
+    const parent = findParent(rootNode, target);
+
+    if (parent === null && rootNode.val !== target) {
+      return undefined; // Target is not in the tree
+    }
+
+    return parent === null ? null : parent;
+  }
+
+
   // if (!target) return undefined
   // if (target && !node) return null
 
@@ -122,12 +156,16 @@ function getParentNode(node, target) {
   // }
 
   // return leftParent !== null ? leftParent : rightParent
-}
+
 
 
 
 function inOrderPredecessor(node, target) {
-  // Your code here
+ if (!node) return;
+        inOrderPredecessor(node.left)
+ console.log(node.val.next)
+       inOrderPredecessor(node.right)
+
 }
 
 function deleteNodeBST(node, target) {
